@@ -24,11 +24,11 @@ In a production environment, if every service handles its own notification logic
 ### Instructions
 1. Clone the repository:
 ```bash
-   git clone [https://github.com/seu-usuario/nexus-notification-service.git](https://github.com/seu-usuario/nexus-notification-service.git)
+   git clone https://github.com/Thiago-Teixeir4/nexus-notification-service.git
    ```
 2. Navigate to the project directory:
 ```bash
-  cd nexus-notification service
+  cd nexus-notification-service
 ```
 3. Build and run the project
 ```bash
