@@ -12,4 +12,13 @@ public class SmsNotifier : INotificationService
         this.Receiver = receiver;
         this.Body = body;
     }
+
+    public void Notify()
+    {
+        Console.WriteLine($"""
+                           New message:
+                           {this.Body}
+                           {this.Timestamp} 
+                           """);
+    }
 }
