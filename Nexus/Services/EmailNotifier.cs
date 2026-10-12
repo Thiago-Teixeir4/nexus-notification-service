@@ -1,3 +1,5 @@
+using Serilog;
+
 namespace Nexus.Services;
 
 public class EmailNotifier : INotificationService
@@ -20,6 +22,8 @@ public class EmailNotifier : INotificationService
 
     public void Notify()
     {
+        Log.Information("Email notification service started");
+        
         Console.WriteLine($"""
                            New message:
                            from {this.Sender}
@@ -28,5 +32,7 @@ public class EmailNotifier : INotificationService
                            Message: {this.Body}
                            Sent at {this.Timestamp}
                            """);
+        
+        Log.Information("Email notification ran successfully");
     }
 }

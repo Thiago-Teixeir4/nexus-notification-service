@@ -1,3 +1,5 @@
+using Serilog;
+
 namespace Nexus.Services;
 
 public class SmsNotifier : INotificationService
@@ -15,10 +17,13 @@ public class SmsNotifier : INotificationService
 
     public void Notify()
     {
+        Log.Information("Sms notification service started");
         Console.WriteLine($"""
                            New message:
                            {this.Body}
                            {this.Timestamp} 
                            """);
+        
+        Log.Information("Sms notification ran successfully");
     }
 }
