@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using Nexus.Models;
+using Serilog;
 using Nexus.Services;
 
 namespace Nexus;
@@ -17,12 +18,10 @@ class Program
                 .CreateLogger();
             Log.Information("Log configuration created succesfully");
 
-            INotificationService emailNotification =
-                new EmailNotifier("email@example.com", "sender@example.com", "Congratulations", "Happy birthday!");
-            emailNotification.Notify();
-            INotificationService smsNotification = new SmsNotifier("911", "Help!");
-            smsNotification.Notify();
-            
+            Email email = new Email("thiago@gmail.com", "thiago@usp.br", null , "Teste");
+
+            INotificationService emailNotifier = new EmailNotifier(email);
+            emailNotifier.Notify();
             Log.Information("Program ran successfully");
         }
         finally

@@ -1,38 +1,26 @@
 using Serilog;
-
+using Nexus.Models;
 namespace Nexus.Services;
 
 public class EmailNotifier : INotificationService
 {
-    public DateTime Timestamp { get; set; }
-    public string Receiver { get; set; }
-    public string Sender { get; set; }
-    public string Subject { get; }
-    public string Body { get; set; }
+    public Email Email { init; get; }
 
-    public EmailNotifier(string receiver, string sender, string subject,
-        string body)
+    public EmailNotifier(Email email)
     {
-        Timestamp = DateTime.Now;
-        Receiver = receiver;
-        Sender = sender;
-        Subject = subject;
-        Body = body;
+        Email =  email;
     }
 
     public void Notify()
     {
         Log.Information("Email notification service started");
-        
         Console.WriteLine($"""
-                           New message:
-                           from {this.Sender}
-                           ------------------
-                           subject: {this.Subject}
-                           Message: {this.Body}
-                           Sent at {this.Timestamp}
-                           """);
-        
-        Log.Information("Email notification ran successfully");
+                          From: {Email.Sender}
+                          To: {Email.Receiver}
+                          
+                          Subject: {Email.Subject}
+                          ------------------------------
+                          {Email.Body} 
+                          """);
     }
 }
